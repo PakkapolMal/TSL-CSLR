@@ -12,6 +12,7 @@ wheels/
 sample/
 uv.lock
 .python-version
+requirements.lock
 
 outputs/house_1_w0/
 
