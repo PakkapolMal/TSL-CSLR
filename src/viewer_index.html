@@ -43,7 +43,7 @@
   <h1>TSL Phase 1 Viewer</h1>
   <select id="videoSelect"></select>
   <label style="display:flex;align-items:center;gap:5px;font-size:12px;color:#aaa;cursor:pointer;">
-    <input type="checkbox" id="mergedToggle"> merged
+    <input type="checkbox" id="mergedToggle" checked> merged
   </label>
   <span id="dims" style="color:#777;font-size:12px;"></span>
 </header>
@@ -67,7 +67,7 @@
       <span><i class="swatch" style="background:#4da6ff"></i>pose</span>
       <span><i class="swatch" style="background:#ffcc00"></i>left hand</span>
       <span><i class="swatch" style="background:#ff6666"></i>right hand</span>
-      <span><i class="swatch" style="background:#4da6ff"></i>sign</span>
+      <span><i class="swatch" style="background:#4da431"></i>sign</span>
       <span><i class="swatch" style="background:#ff9f4d"></i>sentence</span>
       <span><i class="swatch" style="background:repeating-linear-gradient(45deg,#000 0 2px,#555 2px 4px)"></i>excluded</span>
     </div>
@@ -101,13 +101,21 @@ let state = { fps: 30, floats: null, nFrames: 0, segments: [], excluded: [], vid
 let mode = 'per-sign'; // 'continuous' | 'per-sign'
 let perSignTarget = null; // the sign segment playback should auto-pause at the end of
 
+// Frame f spans [f/fps, (f+1)/fps), so floor - Math.round relabels the back half
+// of every frame as the next one, which made the readout disagree with end_frame.
+const frameOf = t => Math.floor(t * state.fps);
+// Seek to mid-frame so float error can't land us on the neighbouring frame.
+const timeOfFrame = f => (f + 0.5) / state.fps;
+
 // The sign containing t, or the next upcoming sign if t is in a gap, or null past the last sign.
 function resolveTargetSign(t) {
+  const f = frameOf(t);
   const signs = state.segments.filter(s => s.tier === 'sign').sort((a, b) => a.start_frame - b.start_frame);
-  for (const s of signs) {
-    if (t >= s.start_frame / state.fps && t < s.end_frame / state.fps) return s;
-  }
-  return signs.find(s => s.start_frame / state.fps > t) || null;
+  const here = signs.find(s => f >= s.start_frame && f < s.end_frame);
+  // Parked on a sign's final frame means we just finished it; playing would otherwise
+  // show one frame and stop again. Aim at the next sign instead.
+  if (here && f !== here.end_frame - 1) return here;
+  return signs.find(s => s.start_frame > f) || null;
 }
 
 function setMode(newMode) {
@@ -123,7 +131,10 @@ video.addEventListener('play', () => {
   perSignTarget = (mode === 'per-sign') ? resolveTargetSign(video.currentTime) : null;
 });
 video.addEventListener('seeked', () => {
-  if (mode === 'per-sign' && !video.paused) perSignTarget = resolveTargetSign(video.currentTime);
+  // Clear it when paused rather than leaving the previous sign's bounds in place:
+  // a stale target makes the next play() pause instantly if a check fires before
+  // the 'play' handler re-resolves it.
+  perSignTarget = (mode === 'per-sign' && !video.paused) ? resolveTargetSign(video.currentTime) : null;
 });
 
 async function loadVideoList() {
@@ -187,7 +198,7 @@ video.addEventListener('loadedmetadata', () => {
 });
 
 function frameAt(t) {
-  const f = Math.max(0, Math.min(state.nFrames - 1, Math.round(t * state.fps)));
+  const f = Math.max(0, Math.min(state.nFrames - 1, frameOf(t)));
   const off = f * NPOINTS * 2;
   return state.floats.subarray(off, off + NPOINTS * 2);
 }
@@ -254,12 +265,13 @@ for (const track of [signTrack, sentenceTrack]) {
 }
 
 function currentSegments(t) {
-  return state.segments.filter(s => t >= s.start_frame / state.fps && t < s.end_frame / state.fps);
+  const f = frameOf(t);
+  return state.segments.filter(s => f >= s.start_frame && f < s.end_frame);
 }
 
 function updateInfo() {
   const t = video.currentTime;
-  const frame = Math.round(t * state.fps);
+  const frame = frameOf(t);
   info.textContent = `frame ${frame} / ${state.nFrames}  ·  t=${t.toFixed(2)}s`;
   const active = currentSegments(t);
   currentSegEl.innerHTML = active.length
@@ -280,27 +292,42 @@ function tick() {
 }
 requestAnimationFrame(tick);
 
-// Runs off the media pipeline, not the compositor, so it keeps firing when
-// requestAnimationFrame is throttled (backgrounded/minimized/occluded tab) -
-// rAF alone let playback sail straight through a sign's end_frame unpaused.
-video.addEventListener('timeupdate', () => {
+// end_frame is exclusive (CLAUDE.md 5.5), so a sign's last frame is end_frame - 1.
+//
+// `t` must be the position of the frame on screen RIGHT NOW. video.currentTime is
+// not that: it refreshes in coarse jumps (measured 2-7 frames here), so polling it
+// faster does not help - you just re-read a stale value, which is what made the old
+// pause overshoot and then visibly rewind. rVFC hands us metadata.mediaTime, the
+// exact presentation timestamp of the frame just shown; that is the only clock here
+// with per-frame resolution.
+function checkPerSignStop(t) {
   if (mode !== 'per-sign' || !perSignTarget || video.paused) return;
-  const frame = Math.round(video.currentTime * state.fps);
-  if (frame >= perSignTarget.end_frame) {
-    video.currentTime = perSignTarget.end_frame / state.fps;
-    video.pause();
-  }
-});
+  const last = perSignTarget.end_frame - 1;
+  if (frameOf(t) < last) return;
+  video.pause();
+  if (frameOf(video.currentTime) !== last) video.currentTime = timeOfFrame(last);
+}
+
+if ('requestVideoFrameCallback' in HTMLVideoElement.prototype) {
+  const onFrame = (now, meta) => {
+    checkPerSignStop(meta.mediaTime);
+    video.requestVideoFrameCallback(onFrame);
+  };
+  video.requestVideoFrameCallback(onFrame);
+}
+// Backstop only: coarse clock, so it still overshoots and rewinds. It exists because
+// rVFC stops firing when the tab is hidden, where a late pause beats none at all.
+video.addEventListener('timeupdate', () => checkPerSignStop(video.currentTime));
 
 function adjacentSignTime(dir) {
   const signs = state.segments.filter(s => s.tier === 'sign').sort((a, b) => a.start_frame - b.start_frame);
-  const t = video.currentTime;
+  const f = frameOf(video.currentTime);
   if (dir > 0) {
-    const next = signs.find(s => s.start_frame / state.fps > t + 1e-3);
-    return next ? next.start_frame / state.fps : null;
+    const next = signs.find(s => s.start_frame > f);
+    return next ? timeOfFrame(next.start_frame) : null;
   }
-  const prev = [...signs].reverse().find(s => s.start_frame / state.fps < t - 1e-3);
-  return prev ? prev.start_frame / state.fps : null;
+  const prev = [...signs].reverse().find(s => s.start_frame < f);
+  return prev ? timeOfFrame(prev.start_frame) : null;
 }
 
 function gotoSign(dir) {
@@ -311,14 +338,17 @@ function gotoSign(dir) {
 }
 document.getElementById('nextSeg').addEventListener('click', () => gotoSign(1));
 document.getElementById('prevSeg').addEventListener('click', () => gotoSign(-1));
-document.getElementById('stepFwd').addEventListener('click', () => { video.currentTime += 1 / state.fps; });
-document.getElementById('stepBack').addEventListener('click', () => { video.currentTime -= 1 / state.fps; });
+function stepFrames(d) {
+  video.currentTime = timeOfFrame(Math.max(0, Math.min(state.nFrames - 1, frameOf(video.currentTime) + d)));
+}
+document.getElementById('stepFwd').addEventListener('click', () => stepFrames(1));
+document.getElementById('stepBack').addEventListener('click', () => stepFrames(-1));
 
 document.addEventListener('keydown', ev => {
   if (ev.target.tagName === 'SELECT') return;
   if (ev.repeat) return; // holding a key auto-repeats keydown; ignore so play/pause isn't retriggered mid-transition
-  if (ev.key === 'ArrowRight') { ev.preventDefault(); video.currentTime += 1 / state.fps; }
-  else if (ev.key === 'ArrowLeft') { ev.preventDefault(); video.currentTime -= 1 / state.fps; }
+  if (ev.key === 'ArrowRight') { ev.preventDefault(); stepFrames(1); }
+  else if (ev.key === 'ArrowLeft') { ev.preventDefault(); stepFrames(-1); }
   else if (ev.key === ' ') { ev.preventDefault(); video.paused ? video.play().catch(() => {}) : video.pause(); }
 });
 
