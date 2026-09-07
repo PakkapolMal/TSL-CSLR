@@ -4,9 +4,7 @@ import kagglehub
 # original directory path 404'd). Download every known file in that video's folder.
 folder = "ThaiSignVis/process_videos/process_videos"
 subfolder = "[LIVE]_ครั้งที่_2_(สมัยสามัญประจำปีครั้งที่หนึ่ง)_190766"
-files = [
-    "process_video_1.mp4",
-]
+files = "process_video_1.mp4"
 
 for name in files:
     downloaded = kagglehub.dataset_download(

@@ -8,9 +8,15 @@ wheels/
 
 # Virtual environments
 .venv
-
 .vscode/
 sample/
 uv.lock
 .python-version
-outputs/
+requirements.txt
+
+outputs/house_1_w0/
+
+.claude/
+CLAUDE.md
+PHASE1.md
+reports/
