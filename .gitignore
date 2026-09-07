@@ -12,7 +12,6 @@ wheels/
 sample/
 uv.lock
 .python-version
-requirements.txt
 
 outputs/house_1_w0/
 
@@ -20,3 +19,7 @@ outputs/house_1_w0/
 CLAUDE.md
 PHASE1.md
 reports/
+
+# 778 MB, three files over GitHub's 100 MB limit, and the viewer never
+# reads them -- viewer_pose.bin is the precomputed overlay data it uses.
+outputs/**/*.pose

@@ -1,0 +1,1611 @@
+{
+  "video_id": "house_29_w25",
+  "fps": 30.0,
+  "segments": [
+    {
+      "start_frame": 72,
+      "end_frame": 76,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 81,
+      "end_frame": 86,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 91,
+      "end_frame": 105,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 112,
+      "end_frame": 115,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 122,
+      "end_frame": 135,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 143,
+      "end_frame": 156,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 163,
+      "end_frame": 166,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 169,
+      "end_frame": 185,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 195,
+      "end_frame": 203,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 210,
+      "end_frame": 223,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 229,
+      "end_frame": 241,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 253,
+      "end_frame": 259,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 269,
+      "end_frame": 290,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 319,
+      "end_frame": 326,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 330,
+      "end_frame": 331,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 353,
+      "end_frame": 354,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 359,
+      "end_frame": 360,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 361,
+      "end_frame": 363,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 377,
+      "end_frame": 381,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 449,
+      "end_frame": 458,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 477,
+      "end_frame": 482,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 487,
+      "end_frame": 502,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 509,
+      "end_frame": 513,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 516,
+      "end_frame": 522,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 526,
+      "end_frame": 538,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 542,
+      "end_frame": 547,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 554,
+      "end_frame": 559,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 564,
+      "end_frame": 567,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 575,
+      "end_frame": 584,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 588,
+      "end_frame": 593,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 601,
+      "end_frame": 619,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 626,
+      "end_frame": 643,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 662,
+      "end_frame": 665,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 677,
+      "end_frame": 684,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 693,
+      "end_frame": 697,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 703,
+      "end_frame": 711,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 716,
+      "end_frame": 719,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 725,
+      "end_frame": 732,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 738,
+      "end_frame": 753,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 760,
+      "end_frame": 768,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 772,
+      "end_frame": 775,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 784,
+      "end_frame": 786,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 789,
+      "end_frame": 797,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 804,
+      "end_frame": 812,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 818,
+      "end_frame": 825,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 833,
+      "end_frame": 851,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 915,
+      "end_frame": 920,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 929,
+      "end_frame": 945,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 980,
+      "end_frame": 991,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 998,
+      "end_frame": 1017,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1045,
+      "end_frame": 1047,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1055,
+      "end_frame": 1065,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1072,
+      "end_frame": 1079,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1087,
+      "end_frame": 1099,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1104,
+      "end_frame": 1113,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1132,
+      "end_frame": 1146,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1154,
+      "end_frame": 1161,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1168,
+      "end_frame": 1177,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1184,
+      "end_frame": 1204,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1212,
+      "end_frame": 1220,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1226,
+      "end_frame": 1232,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1236,
+      "end_frame": 1254,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1374,
+      "end_frame": 1378,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1387,
+      "end_frame": 1402,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1408,
+      "end_frame": 1413,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1467,
+      "end_frame": 1477,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1482,
+      "end_frame": 1490,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1681,
+      "end_frame": 1684,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1691,
+      "end_frame": 1706,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1713,
+      "end_frame": 1717,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1723,
+      "end_frame": 1730,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1733,
+      "end_frame": 1744,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1746,
+      "end_frame": 1749,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1762,
+      "end_frame": 1780,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1788,
+      "end_frame": 1801,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1814,
+      "end_frame": 1831,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1848,
+      "end_frame": 1859,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1877,
+      "end_frame": 1879,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1893,
+      "end_frame": 1895,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1899,
+      "end_frame": 1902,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1916,
+      "end_frame": 1920,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1926,
+      "end_frame": 1934,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1938,
+      "end_frame": 1941,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1949,
+      "end_frame": 1958,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1964,
+      "end_frame": 1977,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1988,
+      "end_frame": 1998,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2009,
+      "end_frame": 2016,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2022,
+      "end_frame": 2026,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2032,
+      "end_frame": 2037,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2042,
+      "end_frame": 2053,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2061,
+      "end_frame": 2086,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2132,
+      "end_frame": 2138,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2145,
+      "end_frame": 2151,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2158,
+      "end_frame": 2165,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2190,
+      "end_frame": 2193,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2197,
+      "end_frame": 2209,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2216,
+      "end_frame": 2219,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2228,
+      "end_frame": 2253,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2261,
+      "end_frame": 2263,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2272,
+      "end_frame": 2279,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2284,
+      "end_frame": 2287,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2293,
+      "end_frame": 2315,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2322,
+      "end_frame": 2327,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2332,
+      "end_frame": 2338,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2352,
+      "end_frame": 2379,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2387,
+      "end_frame": 2392,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2399,
+      "end_frame": 2404,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2409,
+      "end_frame": 2418,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2425,
+      "end_frame": 2443,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2452,
+      "end_frame": 2466,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2703,
+      "end_frame": 2714,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2717,
+      "end_frame": 2720,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2724,
+      "end_frame": 2737,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2745,
+      "end_frame": 2755,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2760,
+      "end_frame": 2774,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2892,
+      "end_frame": 2905,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2913,
+      "end_frame": 2919,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2926,
+      "end_frame": 2970,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2977,
+      "end_frame": 2980,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2982,
+      "end_frame": 2991,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2998,
+      "end_frame": 3008,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3017,
+      "end_frame": 3045,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3050,
+      "end_frame": 3053,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3057,
+      "end_frame": 3069,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3072,
+      "end_frame": 3083,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3090,
+      "end_frame": 3110,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3116,
+      "end_frame": 3122,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3127,
+      "end_frame": 3131,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3141,
+      "end_frame": 3162,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3170,
+      "end_frame": 3175,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3180,
+      "end_frame": 3189,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3194,
+      "end_frame": 3201,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3208,
+      "end_frame": 3216,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3218,
+      "end_frame": 3223,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3230,
+      "end_frame": 3237,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3248,
+      "end_frame": 3252,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3259,
+      "end_frame": 3282,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3287,
+      "end_frame": 3295,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3349,
+      "end_frame": 3353,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3360,
+      "end_frame": 3365,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3372,
+      "end_frame": 3378,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3383,
+      "end_frame": 3389,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3397,
+      "end_frame": 3412,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3420,
+      "end_frame": 3428,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3437,
+      "end_frame": 3509,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3536,
+      "end_frame": 3554,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3600,
+      "end_frame": 3615,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3620,
+      "end_frame": 3642,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3649,
+      "end_frame": 3654,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3660,
+      "end_frame": 3670,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3677,
+      "end_frame": 3696,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3701,
+      "end_frame": 3703,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3713,
+      "end_frame": 3739,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3745,
+      "end_frame": 3755,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3768,
+      "end_frame": 3777,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3785,
+      "end_frame": 3791,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3798,
+      "end_frame": 3809,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3816,
+      "end_frame": 3818,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3821,
+      "end_frame": 3827,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3835,
+      "end_frame": 3850,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3862,
+      "end_frame": 3880,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3896,
+      "end_frame": 3912,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3916,
+      "end_frame": 3930,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3944,
+      "end_frame": 3947,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3955,
+      "end_frame": 3959,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3966,
+      "end_frame": 3974,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3978,
+      "end_frame": 3986,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3990,
+      "end_frame": 3998,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4050,
+      "end_frame": 4060,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4071,
+      "end_frame": 4080,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4090,
+      "end_frame": 4096,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4103,
+      "end_frame": 4106,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4110,
+      "end_frame": 4112,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4118,
+      "end_frame": 4125,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4130,
+      "end_frame": 4136,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4141,
+      "end_frame": 4144,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4151,
+      "end_frame": 4160,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4166,
+      "end_frame": 4169,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4173,
+      "end_frame": 4179,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4186,
+      "end_frame": 4191,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4195,
+      "end_frame": 4200,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4205,
+      "end_frame": 4207,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4211,
+      "end_frame": 4214,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4219,
+      "end_frame": 4250,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4258,
+      "end_frame": 4274,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4280,
+      "end_frame": 4287,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4292,
+      "end_frame": 4302,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4305,
+      "end_frame": 4311,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4314,
+      "end_frame": 4325,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4337,
+      "end_frame": 4353,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4358,
+      "end_frame": 4362,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4366,
+      "end_frame": 4377,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4391,
+      "end_frame": 4402,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4410,
+      "end_frame": 4415,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4420,
+      "end_frame": 4425,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4431,
+      "end_frame": 4449,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4455,
+      "end_frame": 4477,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4727,
+      "end_frame": 4730,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4733,
+      "end_frame": 4735,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4741,
+      "end_frame": 4775,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4784,
+      "end_frame": 4791,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4804,
+      "end_frame": 4807,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4812,
+      "end_frame": 4814,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4821,
+      "end_frame": 4834,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4838,
+      "end_frame": 4863,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4876,
+      "end_frame": 4891,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4897,
+      "end_frame": 4905,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4915,
+      "end_frame": 4918,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4924,
+      "end_frame": 4935,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4943,
+      "end_frame": 4945,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4949,
+      "end_frame": 4958,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4965,
+      "end_frame": 4969,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4975,
+      "end_frame": 4981,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4986,
+      "end_frame": 5038,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5050,
+      "end_frame": 5064,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5070,
+      "end_frame": 5078,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5084,
+      "end_frame": 5107,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5114,
+      "end_frame": 5131,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5139,
+      "end_frame": 5149,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5155,
+      "end_frame": 5160,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5166,
+      "end_frame": 5169,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5174,
+      "end_frame": 5181,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5188,
+      "end_frame": 5198,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5207,
+      "end_frame": 5221,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5223,
+      "end_frame": 5244,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5248,
+      "end_frame": 5252,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5258,
+      "end_frame": 5262,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5270,
+      "end_frame": 5275,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5281,
+      "end_frame": 5289,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5298,
+      "end_frame": 5304,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5313,
+      "end_frame": 5338,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5378,
+      "end_frame": 5385,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5387,
+      "end_frame": 5405,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5410,
+      "end_frame": 5419,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5435,
+      "end_frame": 5454,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5460,
+      "end_frame": 5468,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5509,
+      "end_frame": 5526,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5873,
+      "end_frame": 5882,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5889,
+      "end_frame": 5894,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5902,
+      "end_frame": 5911,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5916,
+      "end_frame": 5937,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6169,
+      "end_frame": 6173,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6182,
+      "end_frame": 6189,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6195,
+      "end_frame": 6227,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6328,
+      "end_frame": 6330,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6338,
+      "end_frame": 6343,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6351,
+      "end_frame": 6365,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6476,
+      "end_frame": 6482,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6488,
+      "end_frame": 6491,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6496,
+      "end_frame": 6500,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6505,
+      "end_frame": 6514,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6520,
+      "end_frame": 6536,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6540,
+      "end_frame": 6544,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6552,
+      "end_frame": 6559,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6568,
+      "end_frame": 6574,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6582,
+      "end_frame": 6594,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6622,
+      "end_frame": 6641,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6650,
+      "end_frame": 6658,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6722,
+      "end_frame": 6747,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6763,
+      "end_frame": 6776,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6782,
+      "end_frame": 6787,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6792,
+      "end_frame": 6805,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6816,
+      "end_frame": 6823,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6827,
+      "end_frame": 6832,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6842,
+      "end_frame": 6848,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6855,
+      "end_frame": 6870,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6878,
+      "end_frame": 6884,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6890,
+      "end_frame": 6896,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6900,
+      "end_frame": 6917,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6928,
+      "end_frame": 6933,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6938,
+      "end_frame": 6946,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6955,
+      "end_frame": 6963,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6968,
+      "end_frame": 6973,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6975,
+      "end_frame": 6982,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6987,
+      "end_frame": 6993,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6997,
+      "end_frame": 7003,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 7008,
+      "end_frame": 7020,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 7029,
+      "end_frame": 7036,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 7039,
+      "end_frame": 7043,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 7050,
+      "end_frame": 7062,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 7069,
+      "end_frame": 7077,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 7089,
+      "end_frame": 7130,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 7491,
+      "end_frame": 7493,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 72,
+      "end_frame": 326,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 330,
+      "end_frame": 331,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 353,
+      "end_frame": 354,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 359,
+      "end_frame": 360,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 361,
+      "end_frame": 363,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 365,
+      "end_frame": 366,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 372,
+      "end_frame": 388,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 410,
+      "end_frame": 413,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 419,
+      "end_frame": 868,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 907,
+      "end_frame": 964,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 968,
+      "end_frame": 1034,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 1038,
+      "end_frame": 1268,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 1364,
+      "end_frame": 1429,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 1458,
+      "end_frame": 1502,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 1670,
+      "end_frame": 2102,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 2126,
+      "end_frame": 2481,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 2694,
+      "end_frame": 2789,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 2879,
+      "end_frame": 3308,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 3339,
+      "end_frame": 3571,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 3591,
+      "end_frame": 4014,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 4044,
+      "end_frame": 4489,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 4718,
+      "end_frame": 5355,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 5367,
+      "end_frame": 5482,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 5500,
+      "end_frame": 5531,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 5533,
+      "end_frame": 5547,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 5865,
+      "end_frame": 5951,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 6159,
+      "end_frame": 6240,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 6321,
+      "end_frame": 6379,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 6467,
+      "end_frame": 6674,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 6712,
+      "end_frame": 7143,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 7448,
+      "end_frame": 7450,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 7455,
+      "end_frame": 7456,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 7457,
+      "end_frame": 7461,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 7469,
+      "end_frame": 7473,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 7474,
+      "end_frame": 7475,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 7476,
+      "end_frame": 7482,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 7489,
+      "end_frame": 7493,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 7500,
+      "end_frame": 7502,
+      "tier": "sentence"
+    }
+  ]
+}

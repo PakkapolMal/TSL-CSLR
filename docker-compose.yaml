@@ -1,0 +1,10 @@
+services:
+  viewer:
+    build: .
+    ports:
+      - "8765:8765"
+    volumes:
+      # rw: the viewer writes viewer_pose.bin if a video's cache is missing
+      - ./outputs:/app/outputs
+      # ro: only ever streamed to the <video> element
+      - ./sample:/app/sample:ro

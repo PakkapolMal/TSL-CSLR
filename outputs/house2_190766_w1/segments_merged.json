@@ -1,0 +1,1006 @@
+{
+  "video_id": "house2_190766_w1",
+  "fps": 30.0,
+  "segments": [
+    {
+      "start_frame": 164,
+      "end_frame": 529,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 173,
+      "end_frame": 222,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 244,
+      "end_frame": 284,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 317,
+      "end_frame": 435,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 446,
+      "end_frame": 492,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 508,
+      "end_frame": 514,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 577,
+      "end_frame": 629,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 590,
+      "end_frame": 617,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 690,
+      "end_frame": 856,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 702,
+      "end_frame": 736,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 748,
+      "end_frame": 831,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 859,
+      "end_frame": 1019,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 867,
+      "end_frame": 878,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 890,
+      "end_frame": 903,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 924,
+      "end_frame": 950,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 992,
+      "end_frame": 1005,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1082,
+      "end_frame": 1962,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 1091,
+      "end_frame": 1213,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1224,
+      "end_frame": 1341,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1352,
+      "end_frame": 1446,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1488,
+      "end_frame": 1538,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1550,
+      "end_frame": 1553,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1570,
+      "end_frame": 1724,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1748,
+      "end_frame": 1928,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 1939,
+      "end_frame": 1951,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2106,
+      "end_frame": 2314,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 2115,
+      "end_frame": 2147,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2160,
+      "end_frame": 2287,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2320,
+      "end_frame": 2388,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 2331,
+      "end_frame": 2376,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2412,
+      "end_frame": 2962,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 2424,
+      "end_frame": 2526,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2537,
+      "end_frame": 2784,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2808,
+      "end_frame": 2849,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2881,
+      "end_frame": 2940,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 2970,
+      "end_frame": 4076,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 2978,
+      "end_frame": 3024,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3047,
+      "end_frame": 3067,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3078,
+      "end_frame": 3140,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3153,
+      "end_frame": 3243,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3254,
+      "end_frame": 3299,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3334,
+      "end_frame": 3336,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3347,
+      "end_frame": 3357,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3371,
+      "end_frame": 3598,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3610,
+      "end_frame": 3630,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 3655,
+      "end_frame": 4062,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4096,
+      "end_frame": 4612,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 4116,
+      "end_frame": 4148,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4164,
+      "end_frame": 4246,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4265,
+      "end_frame": 4272,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4283,
+      "end_frame": 4370,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4383,
+      "end_frame": 4441,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4458,
+      "end_frame": 4504,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4523,
+      "end_frame": 4553,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4564,
+      "end_frame": 4586,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4616,
+      "end_frame": 5606,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 4624,
+      "end_frame": 4643,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4654,
+      "end_frame": 4811,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4828,
+      "end_frame": 4884,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4896,
+      "end_frame": 4949,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 4973,
+      "end_frame": 5092,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5103,
+      "end_frame": 5191,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5206,
+      "end_frame": 5244,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5259,
+      "end_frame": 5333,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5345,
+      "end_frame": 5593,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 5730,
+      "end_frame": 6270,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 5737,
+      "end_frame": 6091,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6116,
+      "end_frame": 6242,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6272,
+      "end_frame": 6599,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 6280,
+      "end_frame": 6420,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6444,
+      "end_frame": 6449,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6460,
+      "end_frame": 6586,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6759,
+      "end_frame": 6898,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 6766,
+      "end_frame": 6885,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 6931,
+      "end_frame": 7004,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 6940,
+      "end_frame": 6991,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 7325,
+      "end_frame": 7508,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 7330,
+      "end_frame": 7403,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 7418,
+      "end_frame": 7493,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 7541,
+      "end_frame": 7763,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 7547,
+      "end_frame": 7565,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 7576,
+      "end_frame": 7683,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 7703,
+      "end_frame": 7750,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 7894,
+      "end_frame": 8025,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 7902,
+      "end_frame": 8014,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 8136,
+      "end_frame": 8423,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 8145,
+      "end_frame": 8173,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 8184,
+      "end_frame": 8212,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 8223,
+      "end_frame": 8407,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 8511,
+      "end_frame": 8916,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 8519,
+      "end_frame": 8554,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 8587,
+      "end_frame": 8739,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 8771,
+      "end_frame": 8836,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 8863,
+      "end_frame": 8904,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 9090,
+      "end_frame": 9200,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 9098,
+      "end_frame": 9101,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 9112,
+      "end_frame": 9185,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 9220,
+      "end_frame": 9260,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 9227,
+      "end_frame": 9248,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 9347,
+      "end_frame": 9425,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 9352,
+      "end_frame": 9402,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 9428,
+      "end_frame": 9527,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 9442,
+      "end_frame": 9473,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 9497,
+      "end_frame": 9514,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 9570,
+      "end_frame": 9838,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 9580,
+      "end_frame": 9616,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 9652,
+      "end_frame": 9673,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 9684,
+      "end_frame": 9821,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 9873,
+      "end_frame": 9940,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 9880,
+      "end_frame": 9924,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 9995,
+      "end_frame": 10472,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 10002,
+      "end_frame": 10061,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 10072,
+      "end_frame": 10091,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 10103,
+      "end_frame": 10153,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 10165,
+      "end_frame": 10212,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 10237,
+      "end_frame": 10340,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 10354,
+      "end_frame": 10448,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 10475,
+      "end_frame": 10562,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 10485,
+      "end_frame": 10550,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 10649,
+      "end_frame": 10824,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 10658,
+      "end_frame": 10693,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 10705,
+      "end_frame": 10811,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 11052,
+      "end_frame": 11119,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 11059,
+      "end_frame": 11108,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 11145,
+      "end_frame": 11575,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 11152,
+      "end_frame": 11181,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 11201,
+      "end_frame": 11212,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 11230,
+      "end_frame": 11307,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 11325,
+      "end_frame": 11373,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 11386,
+      "end_frame": 11500,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 11511,
+      "end_frame": 11556,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 11604,
+      "end_frame": 11655,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 11612,
+      "end_frame": 11645,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 11700,
+      "end_frame": 11880,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 11705,
+      "end_frame": 11712,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 11726,
+      "end_frame": 11867,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 11918,
+      "end_frame": 12206,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 11926,
+      "end_frame": 12192,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 12267,
+      "end_frame": 12680,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 12275,
+      "end_frame": 12345,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 12358,
+      "end_frame": 12460,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 12471,
+      "end_frame": 12663,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 12708,
+      "end_frame": 13345,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 12718,
+      "end_frame": 12769,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 12780,
+      "end_frame": 12800,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 12814,
+      "end_frame": 12828,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 12843,
+      "end_frame": 12927,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 12939,
+      "end_frame": 13008,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 13030,
+      "end_frame": 13071,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 13082,
+      "end_frame": 13088,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 13099,
+      "end_frame": 13234,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 13251,
+      "end_frame": 13331,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 13374,
+      "end_frame": 13954,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 13382,
+      "end_frame": 13427,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 13459,
+      "end_frame": 13496,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 13514,
+      "end_frame": 13634,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 13646,
+      "end_frame": 13674,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 13687,
+      "end_frame": 13699,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 13738,
+      "end_frame": 13848,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 13865,
+      "end_frame": 13920,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 13931,
+      "end_frame": 13938,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 13992,
+      "end_frame": 14294,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 14000,
+      "end_frame": 14064,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 14106,
+      "end_frame": 14279,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 14309,
+      "end_frame": 14622,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 14320,
+      "end_frame": 14609,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 14651,
+      "end_frame": 14866,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 14657,
+      "end_frame": 14819,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 14832,
+      "end_frame": 14845,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 14869,
+      "end_frame": 14973,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 14885,
+      "end_frame": 14893,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 14904,
+      "end_frame": 14956,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 15017,
+      "end_frame": 15288,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 15026,
+      "end_frame": 15087,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 15098,
+      "end_frame": 15168,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 15184,
+      "end_frame": 15209,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 15221,
+      "end_frame": 15270,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 15310,
+      "end_frame": 15622,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 15317,
+      "end_frame": 15420,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 15431,
+      "end_frame": 15446,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 15467,
+      "end_frame": 15551,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 15564,
+      "end_frame": 15608,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 15665,
+      "end_frame": 15722,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 15672,
+      "end_frame": 15709,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 15792,
+      "end_frame": 15879,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 15800,
+      "end_frame": 15804,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 15816,
+      "end_frame": 15865,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 15924,
+      "end_frame": 16219,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 15931,
+      "end_frame": 15952,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 15966,
+      "end_frame": 16071,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 16103,
+      "end_frame": 16165,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 16176,
+      "end_frame": 16206,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 16508,
+      "end_frame": 16609,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 16515,
+      "end_frame": 16596,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 17078,
+      "end_frame": 17103,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 17085,
+      "end_frame": 17099,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 17107,
+      "end_frame": 17114,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 17118,
+      "end_frame": 17135,
+      "tier": "sentence"
+    },
+    {
+      "start_frame": 17119,
+      "end_frame": 17133,
+      "tier": "sign"
+    },
+    {
+      "start_frame": 17141,
+      "end_frame": 17144,
+      "tier": "sentence"
+    }
+  ]
+}

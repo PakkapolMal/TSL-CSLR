@@ -171,6 +171,7 @@ def make_handler(config: dict, force: bool):
 def main() -> None:
     parser = argparse.ArgumentParser(description="Phase 1 review viewer")
     parser.add_argument("--port", type=int, default=8765)
+    parser.add_argument("--host", default="127.0.0.1", help="bind address; 0.0.0.0 in Docker")
     parser.add_argument("--video", help="preselect a video_id")
     parser.add_argument("--force", action="store_true", help="recompute cached pose_viewer.bin")
     parser.add_argument("--no-open", action="store_true", help="don't auto-open the browser")
@@ -182,7 +183,7 @@ def main() -> None:
     if not videos:
         raise SystemExit("No videos have a segments.json yet -- run `python -m src.pipeline` first.")
 
-    server = http.server.ThreadingHTTPServer(("127.0.0.1", args.port), make_handler(config, args.force))
+    server = http.server.ThreadingHTTPServer((args.host, args.port), make_handler(config, args.force))
     url = f"http://127.0.0.1:{args.port}/"
     if args.video:
         url += f"?video={args.video}"
