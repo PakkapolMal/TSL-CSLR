@@ -1,0 +1,25 @@
+data_root: sample/ThaiSignVis/process_videos/process_videos
+output_root: outputs
+
+# Default run set. PHASE1.md originally specified the three shortest videos
+# (house_1_w0, senate_15_w1, house_29_w25), but house_1_w0 and senate_15_w1
+# fail the >=60% hand-landmark gate (57.8% / 53.4% left hand, measured
+# directly against their .pose confidence data -- not a code bug, see
+# reports/phase1_review.md). Swapped in the two next-shortest videos that
+# pass, keeping the same 2-house/1-senate signer mix.
+# To run everything, pass --all or extend this list.
+run: [house_29_w25, house2_190766_w1, senate_181266_w0]
+
+videos:
+  house_1_w0:
+    path: "LIVE_การประชุมสภาผู้แทนราษฎร_ครั้งที่_1_(สมัยวิสามัญ)_เป็นพิเศษวันที่_18_มิถุนายน_พ.ศ._2567/process_video_0.mp4"
+  senate_15_w1:
+    path: "Live_การประชุมวุฒิสภา_ครั้งที่_15_(สมัยสามัญประจำปีครั้งที่สอง)/process_video_1.mp4"
+  house_29_w25:
+    path: "[LIVE]_การประชุมสภาผู้แทนราษฎร_ครั้งที่_29_(สมัยสามัญประจำปีครั้งที่สอง)_เป็นพิเศษ_22_มี.ค._67/process_video_25.mp4"
+  house2_190766_w1:
+    path: "[LIVE]_ครั้งที่_2_(สมัยสามัญประจำปีครั้งที่หนึ่ง)_190766/process_video_1.mp4"
+  house_24_w1:
+    path: "(Live)_การประชุมสภาผู้แทนราษฎรครั้งที่_24_(สมัยสามัญประจำปีครั้งที่หนึ่ง)/process_video_1.mp4"
+  senate_181266_w0:
+    path: "(LIVE)_การประชุมวุฒิสภา_ครั้งที่_2_(สมัยสามัญประจำปีครั้งที่สอง)_181266/process_video_0.mp4"

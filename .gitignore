@@ -13,3 +13,4 @@ wheels/
 sample/
 uv.lock
 .python-version
+outputs/

@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TSL Phase 1 Viewer</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #14151a; color: #e6e6e6; font: 14px/1.4 system-ui, sans-serif; }
+  header { display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: #1c1e26; border-bottom: 1px solid #2a2d3a; }
+  header h1 { font-size: 15px; margin: 0; font-weight: 600; color: #9fb4ff; }
+  select, button { background: #262a38; color: #e6e6e6; border: 1px solid #3a3f52; border-radius: 4px; padding: 5px 10px; font-size: 13px; cursor: pointer; }
+  button:hover, select:hover { border-color: #5b6ee8; }
+  main { max-width: 980px; margin: 20px auto; padding: 0 16px; }
+  .stage { position: relative; width: 100%; aspect-ratio: 1 / 1; background: #000; border-radius: 6px; overflow: hidden; }
+  video, canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+  canvas { pointer-events: none; }
+  .controls { display: flex; align-items: center; gap: 10px; margin: 10px 0; flex-wrap: wrap; }
+  .controls .spacer { flex: 1; }
+  .mode-toggle { display: flex; border: 1px solid #3a3f52; border-radius: 4px; overflow: hidden; }
+  .mode-toggle button { border: none; border-radius: 0; }
+  .mode-toggle button.active { background: #4da6ff; color: #0b0d12; font-weight: 600; }
+  .legend { display: flex; gap: 14px; font-size: 12px; color: #aaa; }
+  .legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .swatch { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+  #info { font-size: 12px; color: #9aa; min-width: 210px; }
+  .timeline { position: relative; margin-top: 14px; }
+  .track { position: relative; height: 26px; background: #1c1e26; border-radius: 4px; margin-bottom: 4px; cursor: pointer; overflow: hidden; }
+  .track-label { position: absolute; left: 6px; top: 5px; font-size: 10px; color: #777; z-index: 2; pointer-events: none; text-transform: uppercase; letter-spacing: .05em; }
+  .seg { position: absolute; top: 0; bottom: 0; opacity: .85; }
+  .seg:hover { opacity: 1; outline: 1px solid #fff; }
+  .seg.sign { background: #4da6ff; }
+  .seg.sentence { background: #ff9f4d; }
+  .excluded { position: absolute; top: 0; bottom: 0; background: repeating-linear-gradient(45deg, #000 0 4px, #333 4px 8px); opacity: .6; z-index: 1; }
+  .playhead { position: absolute; top: -2px; bottom: -2px; width: 2px; background: #fff; pointer-events: none; z-index: 3; }
+  #current-seg { font-size: 12px; color: #ccc; margin-top: 8px; min-height: 34px; }
+  #current-seg b { color: #fff; }
+  .hint { font-size: 11px; color: #667; margin-top: 6px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>TSL Phase 1 Viewer</h1>
+  <select id="videoSelect"></select>
+  <label style="display:flex;align-items:center;gap:5px;font-size:12px;color:#aaa;cursor:pointer;">
+    <input type="checkbox" id="mergedToggle"> merged
+  </label>
+  <span id="dims" style="color:#777;font-size:12px;"></span>
+</header>
+<main>
+  <div class="stage">
+    <video id="video" controls></video>
+    <canvas id="overlay"></canvas>
+  </div>
+
+  <div class="controls">
+    <div class="mode-toggle" id="modeToggle">
+      <button id="modeContinuous">Continuous</button>
+      <button id="modePerSign">Per-sign</button>
+    </div>
+    <button id="prevSeg">⟵ prev sign</button>
+    <button id="nextSeg">next sign ⟶</button>
+    <button id="stepBack">-1 frame</button>
+    <button id="stepFwd">+1 frame</button>
+    <div class="spacer"></div>
+    <div class="legend">
+      <span><i class="swatch" style="background:#4da6ff"></i>pose</span>
+      <span><i class="swatch" style="background:#ffcc00"></i>left hand</span>
+      <span><i class="swatch" style="background:#ff6666"></i>right hand</span>
+      <span><i class="swatch" style="background:#4da6ff"></i>sign</span>
+      <span><i class="swatch" style="background:#ff9f4d"></i>sentence</span>
+      <span><i class="swatch" style="background:repeating-linear-gradient(45deg,#000 0 2px,#555 2px 4px)"></i>excluded</span>
+    </div>
+    <div id="info"></div>
+  </div>
+
+  <div class="timeline">
+    <div class="track" id="signTrack"><span class="track-label">sign</span><div class="playhead" id="ph1"></div></div>
+    <div class="track" id="sentenceTrack"><span class="track-label">sentence</span><div class="playhead" id="ph2"></div></div>
+  </div>
+  <div id="current-seg"></div>
+  <div class="hint">Click a track to seek. Click a segment for its exact bounds. Arrow keys step one frame. Per-sign mode auto-pauses at each sign's end; next/prev steps to the next sign and plays it.</div>
+</main>
+
+<script>
+const POSE_CONN = [[0,1],[1,2],[2,3],[3,7],[0,4],[4,5],[5,6],[6,8],[9,10],[11,12],[11,13],[13,15],[15,17],[15,19],[15,21],[17,19],[12,14],[14,16],[16,18],[16,20],[16,22],[18,20],[11,23],[12,24],[23,24],[23,25],[24,26],[25,27],[26,28],[27,29],[28,30],[29,31],[30,32],[27,31],[28,32]];
+const HAND_CONN = [[0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],[5,9],[9,10],[10,11],[11,12],[9,13],[13,14],[14,15],[15,16],[13,17],[17,18],[18,19],[19,20],[0,17]];
+const NPOINTS = 75; // 33 pose + 21 left hand + 21 right hand
+
+const video = document.getElementById('video');
+const canvas = document.getElementById('overlay');
+const ctx = canvas.getContext('2d');
+const videoSelect = document.getElementById('videoSelect');
+const info = document.getElementById('info');
+const currentSegEl = document.getElementById('current-seg');
+const signTrack = document.getElementById('signTrack');
+const sentenceTrack = document.getElementById('sentenceTrack');
+const dims = document.getElementById('dims');
+
+let state = { fps: 30, floats: null, nFrames: 0, segments: [], excluded: [], videoId: null, duration: 0 };
+let mode = 'per-sign'; // 'continuous' | 'per-sign'
+let perSignTarget = null; // the sign segment playback should auto-pause at the end of
+
+// The sign containing t, or the next upcoming sign if t is in a gap, or null past the last sign.
+function resolveTargetSign(t) {
+  const signs = state.segments.filter(s => s.tier === 'sign').sort((a, b) => a.start_frame - b.start_frame);
+  for (const s of signs) {
+    if (t >= s.start_frame / state.fps && t < s.end_frame / state.fps) return s;
+  }
+  return signs.find(s => s.start_frame / state.fps > t) || null;
+}
+
+function setMode(newMode) {
+  mode = newMode;
+  document.getElementById('modeContinuous').classList.toggle('active', mode === 'continuous');
+  document.getElementById('modePerSign').classList.toggle('active', mode === 'per-sign');
+  perSignTarget = (mode === 'per-sign' && !video.paused) ? resolveTargetSign(video.currentTime) : null;
+}
+document.getElementById('modeContinuous').addEventListener('click', () => setMode('continuous'));
+document.getElementById('modePerSign').addEventListener('click', () => setMode('per-sign'));
+
+video.addEventListener('play', () => {
+  perSignTarget = (mode === 'per-sign') ? resolveTargetSign(video.currentTime) : null;
+});
+video.addEventListener('seeked', () => {
+  if (mode === 'per-sign' && !video.paused) perSignTarget = resolveTargetSign(video.currentTime);
+});
+
+async function loadVideoList() {
+  const videos = await fetch('/api/videos').then(r => r.json());
+  videoSelect.innerHTML = '';
+  for (const [id, fps] of Object.entries(videos)) {
+    const opt = document.createElement('option');
+    opt.value = id; opt.textContent = `${id} (${fps} fps)`;
+    videoSelect.appendChild(opt);
+  }
+  const params = new URLSearchParams(location.search);
+  const preselect = params.get('video');
+  if (preselect && videos[preselect] !== undefined) videoSelect.value = preselect;
+  await selectVideo(videoSelect.value);
+}
+
+videoSelect.addEventListener('change', () => selectVideo(videoSelect.value));
+
+const mergedToggle = document.getElementById('mergedToggle');
+
+// Falls back to segments.json if segments_merged.json doesn't exist for this video.
+async function loadSegments(id) {
+  if (mergedToggle.checked) {
+    const r = await fetch(`/data/${id}/segments_merged.json`);
+    if (r.ok) return r.json();
+    mergedToggle.checked = false;
+  }
+  return fetch(`/data/${id}/segments.json`).then(r => r.json());
+}
+
+async function selectVideo(id) {
+  state.videoId = id;
+  const [segData, excData, poseBuf] = await Promise.all([
+    loadSegments(id),
+    fetch(`/data/${id}/excluded_spans.json`).then(r => r.ok ? r.json() : { spans: [] }),
+    fetch(`/data/${id}/pose.bin`).then(r => r.arrayBuffer()),
+  ]);
+  state.fps = segData.fps;
+  state.segments = segData.segments;
+  state.excluded = excData.spans || [];
+  const view = new DataView(poseBuf);
+  state.nFrames = view.getUint32(0, true);
+  state.floats = new Float32Array(poseBuf, 8);
+  video.src = `/video/${id}`;
+  video.load();
+  setMode('per-sign');
+}
+
+mergedToggle.addEventListener('change', async () => {
+  const segData = await loadSegments(state.videoId);
+  state.fps = segData.fps;
+  state.segments = segData.segments;
+  renderTimeline();
+  updateInfo();
+});
+
+video.addEventListener('loadedmetadata', () => {
+  state.duration = video.duration;
+  dims.textContent = `${video.videoWidth}x${video.videoHeight}, ${state.duration.toFixed(1)}s`;
+  renderTimeline();
+});
+
+function frameAt(t) {
+  const f = Math.max(0, Math.min(state.nFrames - 1, Math.round(t * state.fps)));
+  const off = f * NPOINTS * 2;
+  return state.floats.subarray(off, off + NPOINTS * 2);
+}
+
+function drawSkeleton() {
+  const w = canvas.width, h = canvas.height;
+  ctx.clearRect(0, 0, w, h);
+  if (!state.floats) return;
+  const pts = frameAt(video.currentTime);
+  const pt = i => [pts[i * 2] * w, pts[i * 2 + 1] * h];
+  const drawConns = (conns, offset, color) => {
+    ctx.strokeStyle = color; ctx.lineWidth = 2;
+    for (const [a, b] of conns) {
+      const [x1, y1] = pt(offset + a), [x2, y2] = pt(offset + b);
+      if ((x1 === 0 && y1 === 0) || (x2 === 0 && y2 === 0)) continue;
+      ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+    }
+  };
+  drawConns(POSE_CONN, 0, '#4da6ff');
+  drawConns(HAND_CONN, 33, '#ffcc00');
+  drawConns(HAND_CONN, 54, '#ff6666');
+  ctx.fillStyle = '#fff';
+  for (let i = 0; i < NPOINTS; i++) {
+    const [x, y] = pt(i);
+    if (x === 0 && y === 0) continue;
+    ctx.beginPath(); ctx.arc(x, y, 2, 0, 7); ctx.fill();
+  }
+}
+
+function segColor(tier) { return tier === 'sign' ? 'sign' : 'sentence'; }
+
+function renderTimeline() {
+  signTrack.querySelectorAll('.seg,.excluded').forEach(e => e.remove());
+  sentenceTrack.querySelectorAll('.seg,.excluded').forEach(e => e.remove());
+  const dur = state.duration || 1;
+  for (const seg of state.segments) {
+    const track = seg.tier === 'sign' ? signTrack : sentenceTrack;
+    const el = document.createElement('div');
+    el.className = `seg ${segColor(seg.tier)}`;
+    const startS = seg.start_frame / state.fps, endS = seg.end_frame / state.fps;
+    el.style.left = (startS / dur * 100) + '%';
+    el.style.width = Math.max(0.12, (endS - startS) / dur * 100) + '%';
+    el.title = `${seg.tier} ${seg.start_frame}-${seg.end_frame}  (${(endS - startS).toFixed(2)}s)`;
+    el.addEventListener('click', ev => { ev.stopPropagation(); video.currentTime = startS; });
+    track.appendChild(el);
+  }
+  for (const [s, e] of state.excluded) {
+    for (const track of [signTrack, sentenceTrack]) {
+      const el = document.createElement('div');
+      el.className = 'excluded';
+      el.style.left = (s / state.fps / dur * 100) + '%';
+      el.style.width = Math.max(0.12, (e - s) / state.fps / dur * 100) + '%';
+      el.title = `excluded ${s}-${e}`;
+      track.appendChild(el);
+    }
+  }
+}
+
+for (const track of [signTrack, sentenceTrack]) {
+  track.addEventListener('click', ev => {
+    const rect = track.getBoundingClientRect();
+    video.currentTime = (ev.clientX - rect.left) / rect.width * state.duration;
+  });
+}
+
+function currentSegments(t) {
+  return state.segments.filter(s => t >= s.start_frame / state.fps && t < s.end_frame / state.fps);
+}
+
+function updateInfo() {
+  const t = video.currentTime;
+  const frame = Math.round(t * state.fps);
+  info.textContent = `frame ${frame} / ${state.nFrames}  ·  t=${t.toFixed(2)}s`;
+  const active = currentSegments(t);
+  currentSegEl.innerHTML = active.length
+    ? active.map(s => `<b>${s.tier}</b> ${s.start_frame}-${s.end_frame} (${((s.end_frame - s.start_frame) / state.fps).toFixed(2)}s)`).join('&nbsp;&nbsp;·&nbsp;&nbsp;')
+    : '<i style="color:#556">no active segment</i>';
+  const dur = state.duration || 1;
+  document.getElementById('ph1').style.left = (t / dur * 100) + '%';
+  document.getElementById('ph2').style.left = (t / dur * 100) + '%';
+}
+
+function tick() {
+  const rect = video.getBoundingClientRect();
+  if (canvas.width !== rect.width) canvas.width = rect.width;
+  if (canvas.height !== rect.height) canvas.height = rect.height;
+  drawSkeleton();
+  updateInfo();
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+
+// Runs off the media pipeline, not the compositor, so it keeps firing when
+// requestAnimationFrame is throttled (backgrounded/minimized/occluded tab) -
+// rAF alone let playback sail straight through a sign's end_frame unpaused.
+video.addEventListener('timeupdate', () => {
+  if (mode !== 'per-sign' || !perSignTarget || video.paused) return;
+  const frame = Math.round(video.currentTime * state.fps);
+  if (frame >= perSignTarget.end_frame) {
+    video.currentTime = perSignTarget.end_frame / state.fps;
+    video.pause();
+  }
+});
+
+function adjacentSignTime(dir) {
+  const signs = state.segments.filter(s => s.tier === 'sign').sort((a, b) => a.start_frame - b.start_frame);
+  const t = video.currentTime;
+  if (dir > 0) {
+    const next = signs.find(s => s.start_frame / state.fps > t + 1e-3);
+    return next ? next.start_frame / state.fps : null;
+  }
+  const prev = [...signs].reverse().find(s => s.start_frame / state.fps < t - 1e-3);
+  return prev ? prev.start_frame / state.fps : null;
+}
+
+function gotoSign(dir) {
+  const t = adjacentSignTime(dir);
+  if (t == null) return; // no-op at the ends of the sign list
+  video.currentTime = t;
+  if (mode === 'per-sign') video.play().catch(() => {});
+}
+document.getElementById('nextSeg').addEventListener('click', () => gotoSign(1));
+document.getElementById('prevSeg').addEventListener('click', () => gotoSign(-1));
+document.getElementById('stepFwd').addEventListener('click', () => { video.currentTime += 1 / state.fps; });
+document.getElementById('stepBack').addEventListener('click', () => { video.currentTime -= 1 / state.fps; });
+
+document.addEventListener('keydown', ev => {
+  if (ev.target.tagName === 'SELECT') return;
+  if (ev.repeat) return; // holding a key auto-repeats keydown; ignore so play/pause isn't retriggered mid-transition
+  if (ev.key === 'ArrowRight') { ev.preventDefault(); video.currentTime += 1 / state.fps; }
+  else if (ev.key === 'ArrowLeft') { ev.preventDefault(); video.currentTime -= 1 / state.fps; }
+  else if (ev.key === ' ') { ev.preventDefault(); video.paused ? video.play().catch(() => {}) : video.pause(); }
+});
+
+loadVideoList();
+</script>
+</body>
+</html>
