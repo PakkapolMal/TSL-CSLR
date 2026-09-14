@@ -1,0 +1,51 @@
+# NECTEC dataset (NECTEC_MERGE.md). Raw videos are 1920x1080@60 broadcasts.
+# src/nectec_prep.py crops the interpreter panel and writes 512x512@30 mp4s into
+# data_root; src/pipeline.py's run_video() then consumes them unchanged.
+raw_root: sample/NECTEC
+data_root: outputs/nectec_prep
+output_root: outputs
+
+# Interpreter panel in raw pixels. Measured 2026-09-14 on 3 frames per video:
+# panel spans x 1292-1919 (moon) / 1310-1919 (math), y 168-901 on all four.
+# Below y=901 is the burned-in subtitle bar, so the box cannot grow downward.
+# A per-video `crop:` entry overrides individual keys.
+crop: {x: 1292, y: 168, w: 628, h: 734}
+
+# Crop edges that cannot move, so hand contact there is reported but not gated
+# (NECTEC_MERGE.md Q11). right: x=1920 is the frame border. bottom: y=901 is where
+# the burned-in subtitle bar starts and the interpreter layer ends.
+# A per-video `fixed_edges:` replaces this list.
+fixed_edges: [right, bottom]
+
+run: [nectec_compare, nectec_muldiv, nectec_mixed, nectec_moon]
+
+# `signer` drives the leave-one-signer-out folds. muldiv and mixed look like the
+# same man from one frame each -- confirm on the verify contact sheets.
+videos:
+  nectec_compare:
+    raw: "คณิตศาสตร์ เล่ม 1บทที่ 1/การเปรียบเทียบและเรียงลำดับ (11.07 นาที).mp4"
+    eaf: "คณิตศาสตร์ เล่ม 1บทที่ 1/elan_final_ed/การเปรียบเทียบและเรียงลำดับ (11.07 นาที).eaf"
+    path: nectec_compare.mp4
+    signer: A
+  nectec_muldiv:
+    raw: "คณิตศาสตร์ เล่ม 1บทที่ 4/การคูณ หาร ไม่มีวงเล็บ (17.27 นาที).mp4"
+    eaf: "คณิตศาสตร์ เล่ม 1บทที่ 4/elan_final_ed/การคูณ หาร ไม่มีวงเล็บ (17.27 นาที).eaf"
+    path: nectec_muldiv.mp4
+    signer: B
+  nectec_mixed:
+    raw: "คณิตศาสตร์ เล่ม 1บทที่ 4/การบวก ลบ คูณ หารระคนแบบที่มีและไม่มีวงเล็บ (23.15 นาที).mp4"
+    eaf: "คณิตศาสตร์ เล่ม 1บทที่ 4/elan_final_ed/การบวก ลบ คูณ หารระคนแบบที่มีและไม่มีวงเล็บ (23.15 นาที).eaf"
+    path: nectec_mixed.mp4
+    signer: B
+  nectec_moon:
+    raw: "วิทยาศาสตร์ เล่ม 2 หน่วยที่ 5 บทที่ 1/18_การขึ้นและตกและรูปร่างของดวงจันทร์ (18.33 นาที) (1).mp4"
+    eaf: "วิทยาศาสตร์ เล่ม 2 หน่วยที่ 5 บทที่ 1/elan_final_ed/18_การขึ้นและตกและรูปร่างของดวงจันทร์ (18.33 นาที) (1).eaf"
+    path: nectec_moon.mp4
+    signer: C
+    # This interpreter's raised hands overlay the header banner above the panel
+    # (y<168), so the box extends up to y=40: banner only, no person there.
+    # Do NOT widen left of the panel (x<1292): sampled every 30 s, the on-screen
+    # teacher stands at x 1160-1280 with her face at mid-height. x=1160 put her
+    # in the crop on 4 of 16 clip contact-sheet frames.
+    crop: {x: 1292, y: 40, w: 628, h: 862}
+    fixed_edges: [left, right, bottom]  # left: the teacher, see above
