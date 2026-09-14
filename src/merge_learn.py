@@ -21,6 +21,7 @@ from src.pipeline import REPO_ROOT, load_config
 
 IOUS = (0.10, 0.25, 0.50)
 GATE_RATIO = 1.1  # pred/GT sign count at or below this means "not over-segmented"
+GATE_NOT_OVER_SHARE = 0.75  # stop if at least this share of videos is not over-segmented (3 of 4)
 GATE_MIN_GAIN = 0.05  # oracle must add at least this much mean F1@0.50
 
 Span = tuple[int, int]
@@ -148,7 +149,7 @@ def gate(config: dict, video_ids: list[str]) -> None:
     mean = lambda f: float(np.mean([f(r) for r in rows]))
     not_over = sum(r["ratio"] <= GATE_RATIO for r in rows)
     gain = mean(lambda r: r["oracle"]["f1@0.50"]) - mean(lambda r: r["stock"]["f1@0.50"])
-    passed = not_over < 3 and gain >= GATE_MIN_GAIN
+    passed = not_over < GATE_NOT_OVER_SHARE * len(rows) and gain >= GATE_MIN_GAIN
 
     lines = [
         "# NECTEC learned merge\n",
@@ -173,7 +174,7 @@ def gate(config: dict, video_ids: list[str]) -> None:
     )
     lines += [
         "",
-        f"- Videos with pred/GT <= {GATE_RATIO}: **{not_over}/{len(rows)}** (stop if >= 3)",
+        f"- Videos with pred/GT <= {GATE_RATIO}: **{not_over}/{len(rows)}** (stop if >= {GATE_NOT_OVER_SHARE:.0%} of videos)",
         f"- Oracle gain in mean F1@0.50: **{gain:+.3f}** (stop if < {GATE_MIN_GAIN})",
         f"- **Gate 0: {'PASS, build (a) and (b)' if passed else 'FAIL, stop: merging is not the fix'}**",
         "",
@@ -205,13 +206,14 @@ def selftest() -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("stage", choices=["gate", "selftest"])
+    parser.add_argument("--video", nargs="+", help="video_ids; default is config `run`")
     parser.add_argument("--config", default=str(REPO_ROOT / "config_nectec.yaml"))
     args = parser.parse_args()
     if args.stage == "selftest":
         selftest()
         return
     config = load_config(Path(args.config))
-    gate(config, config["run"])
+    gate(config, args.video or config["run"])
 
 
 if __name__ == "__main__":

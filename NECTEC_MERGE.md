@@ -1,8 +1,9 @@
 # NECTEC_MERGE.md — learned sign-segment merging on NECTEC ground truth
 
-Status: **plan only, nothing implemented.** Decisions settled in the grilling
-session of 2026-09-14 are marked ✅. Defaults I picked without asking are marked
-🔶 and listed in §9. Veto or change any of them before implementation starts.
+Status (2026-09-14): **stopped at Gate 0, which failed** (§4.1). Steps 1–3 of
+§10 are implemented and run; (a) and (b) were not built, per Q7. Decisions
+settled in the grilling session are marked ✅; the remaining 🔶 defaults are in
+§9.
 
 ---
 
@@ -176,6 +177,42 @@ the full extraction.
 the 4 videos, **or** the oracle merge ceiling improves mean F1@0.50 by less
 than 0.05 over stock, **stop and report**. Merging would be the wrong fix, and
 (a)/(b) don't get built.
+
+### 4.1 Result (2026-09-14): FAIL
+
+Stock `pose_to_segments` on all 4 full videos, scored inside `Gloss` spans:
+
+| video | signer | scored min | GT signs | pred signs | pred/GT | over-seg | under-seg | stock F1@.50 | oracle F1@.50 |
+|---|---|---|---|---|---|---|---|---|---|
+| `nectec_compare` | A | 9.3 | 852 | 863 | 1.01 | 7.9% | 8.3% | 0.739 | 0.798 |
+| `nectec_muldiv` | B | 14.6 | 1208 | 1290 | 1.07 | 10.9% | 6.2% | 0.721 | 0.817 |
+| `nectec_mixed` | B | 20.5 | 1843 | 1877 | 1.02 | 8.7% | 6.8% | 0.714 | 0.800 |
+| `nectec_moon` | C | 12.8 | 972 | 1042 | 1.07 | 13.3% | 7.0% | 0.698 | 0.822 |
+| **mean** | | | | | **1.04** | 10.2% | 7.1% | **0.718** | **0.809** |
+
+Stock F1@.10 / F1@.25 / frame accuracy, mean over the 4 videos: 0.898 / 0.880 / 0.778.
+
+- pred/GT ≤ 1.1 on **4/4** videos → the stop condition fires.
+- Oracle merge gain in F1@0.50: **+0.091**. That clears the 0.05 bar, but the
+  gate is an OR, so the count condition alone stops it.
+- **Reading:** the hypothesis "pose_to_segments emits more segments than TSL
+  glosses" is **false on NECTEC**: counts are within 1–7%. The errors run in
+  both directions, splits (over-seg 10.2%) slightly outnumbering merges
+  (under-seg 7.1%). F1 drops sharply from 0.88 at IoU 0.25 to 0.72 at IoU 0.50,
+  which points to boundary *placement* as the main error, not segment count.
+- Full table: `reports/nectec_merge.md` (gitignored).
+
+### 4.2 Operational finding: segmenter memory
+
+`pose_to_segments` runs full self-attention over the whole sequence in one
+pass (`model.py`, `RoPETransformerEncoderLayer`), so memory grows with T².
+It crashes natively (exit `0xC0000005`, no traceback) once free RAM runs out.
+Measured on this 31.6 GB machine:
+- 28.7k frames crashed with 6.9 GB free, even though it had passed in Phase 1.
+- 41.9k frames passed with 13.7 GB free.
+
+So never run segmentation next to pose extraction or other segmentation jobs.
+Windowed inference was considered and turned out to be unnecessary.
 
 ---
 
