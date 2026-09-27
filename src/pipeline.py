@@ -131,6 +131,26 @@ def _subtract_spans(start: int, end: int, spans: list[tuple[int, int]]) -> list[
     return pieces
 
 
+def relink_eaf(eaf_path: Path, video_path: Path, pose_path: Path) -> None:
+    r"""Rewrite the .eaf media links so ELAN can resolve them.
+
+    pose_to_segments hands raw paths to pympi, which writes them into MEDIA_URL verbatim.
+    Two problems: MEDIA_URL must be a URI (ELAN cannot resolve "D:\TSL\..."), and the
+    .pose is listed as a MEDIA_DESCRIPTOR, so ELAN tries to open it as video. Per the
+    EAF 2.8 schema a non-media companion file belongs in LINKED_FILE_DESCRIPTOR.
+    Both links also get a relative path, so the .eaf survives the repo moving.
+    """
+    rel = lambda p: os.path.relpath(p, eaf_path.parent).replace("\\", "/")
+    eaf = pympi.Elan.Eaf(str(eaf_path))
+    eaf.media_descriptors.clear()
+    eaf.linked_file_descriptors.clear()
+    eaf.add_linked_file(video_path.resolve().as_uri(), relpath=rel(video_path), mimetype="video/mp4")
+    eaf.add_secondary_linked_file(pose_path.resolve().as_uri(), relpath=rel(pose_path),
+                                  mimetype="application/octet-stream")
+    eaf.to_file(str(eaf_path))
+    eaf_path.with_suffix(".bak").unlink(missing_ok=True)  # pympi renames the old file aside
+
+
 def segment(pose_path: Path, eaf_path: Path, video_path: Path, spans_to_exclude: list[tuple[int, int]]) -> list[Segment]:
     """Run the pretrained segmenter and parse its .eaf back into frame-indexed Segments."""
     # pympi backs up an existing .eaf by os.rename()-ing it to .bak, which errors on
@@ -140,6 +160,7 @@ def segment(pose_path: Path, eaf_path: Path, video_path: Path, spans_to_exclude:
 
     cmd = [_cli("pose_to_segments"), "--pose", str(pose_path), "--elan", str(eaf_path), "--video", str(video_path)]
     subprocess.run(cmd, check=True, env=SUBPROCESS_ENV)
+    relink_eaf(eaf_path, video_path, pose_path)
 
     fps = Pose.read(pose_path.read_bytes()).body.fps
 

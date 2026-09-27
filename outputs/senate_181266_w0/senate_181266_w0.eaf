@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ANNOTATION_DOCUMENT AUTHOR="sign-language-processing/segmentation" DATE="2026-09-07T00:25:12+07:00" VERSION="2.8" FORMAT="2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv2.8.xsd">
 	<HEADER>
-		<MEDIA_DESCRIPTOR MEDIA_URL="D:\TSL\sample\ThaiSignVis\process_videos\process_videos\(LIVE)_การประชุมวุฒิสภา_ครั้งที่_2_(สมัยสามัญประจำปีครั้งที่สอง)_181266\process_video_0.mp4" MIME_TYPE="video/mp4" />
-		<MEDIA_DESCRIPTOR MEDIA_URL="D:\TSL\outputs\senate_181266_w0\senate_181266_w0.pose" MIME_TYPE="application/pose" />
+		<MEDIA_DESCRIPTOR MEDIA_URL="file:///D:/TSL/sample/ThaiSignVis/process_videos/process_videos/%28LIVE%29_%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B8%A7%E0%B8%B8%E0%B8%92%E0%B8%B4%E0%B8%AA%E0%B8%A0%E0%B8%B2_%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88_2_%28%E0%B8%AA%E0%B8%A1%E0%B8%B1%E0%B8%A2%E0%B8%AA%E0%B8%B2%E0%B8%A1%E0%B8%B1%E0%B8%8D%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%AA%E0%B8%AD%E0%B8%87%29_181266/process_video_0.mp4" RELATIVE_MEDIA_URL="../../sample/ThaiSignVis/process_videos/process_videos/(LIVE)_การประชุมวุฒิสภา_ครั้งที่_2_(สมัยสามัญประจำปีครั้งที่สอง)_181266/process_video_0.mp4" MIME_TYPE="video/mp4" />
+		<LINKED_FILE_DESCRIPTOR LINK_URL="file:///D:/TSL/outputs/senate_181266_w0/senate_181266_w0.pose" RELATIVE_LINK_URL="senate_181266_w0.pose" MIME_TYPE="application/octet-stream" />
 		<PROPERTY NAME="lastUsedAnnotation">0</PROPERTY>
 		</HEADER>
 	<TIME_ORDER>

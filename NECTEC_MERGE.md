@@ -202,6 +202,26 @@ Stock F1@.10 / F1@.25 / frame accuracy, mean over the 4 videos: 0.898 / 0.880 / 
   which points to boundary *placement* as the main error, not segment count.
 - Full table: `reports/nectec_merge.md` (gitignored).
 
+### 4.1b Measured after the gate: merging does not help
+
+Asked directly whether any post-processing raises the score, so the (a) sweep was
+run as a measurement (not as a built pipeline). `max_gap` 0-30 frames, F1@0.50:
+
+| max_gap | 0 (stock) | 2 | 3 | 5 | 10 |
+|---|---|---|---|---|---|
+| mean F1@0.50 | **0.718** | 0.719 | 0.715 | 0.644 | 0.166 |
+| mean signs | 1268 | 1238 | 1194 | 976 | 334 |
+
+- Tuned leave-one-signer-out: **0.718 -> 0.714 (-0.004)**, i.e. worse.
+- Per-video best gap, chosen on the same video it scores (upper bound):
+  compare +0.001 (gap 2), muldiv +0.000, mixed +0.000, moon +0.010 (gap 3).
+- Gaps 0-1 change nothing, 2 is break-even, past 3 it collapses.
+- **`src/merge_segments.py`'s default `max_gap=5` costs 0.074 F1@0.50**
+  (0.718 -> 0.644) against NECTEC ground truth. The viewer ships with that
+  merge on by default; it is a review aid, not an improvement.
+- The oracle's +0.091 is unreachable by any gap rule: the gap feature carries
+  almost none of it, which also caps what (b) could have won.
+
 ### 4.2 Operational finding: segmenter memory
 
 `pose_to_segments` runs full self-attention over the whole sequence in one

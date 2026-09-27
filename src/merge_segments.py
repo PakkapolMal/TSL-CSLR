@@ -3,6 +3,11 @@
 Does NOT touch outputs/{video_id}/segments.json (the pipeline's Phase 1 output).
 Writes outputs/{video_id}/segments_merged.json instead.
 
+Measured against NECTEC ground truth (2026-09-14): the max_gap=5 default LOWERS
+segmental F1@0.50 from 0.718 to 0.644, and no gap value beats stock by more than
++0.001 when tuned honestly. See NECTEC_MERGE.md 4.1b. Keep this for eyeballing
+short gaps in the viewer; do not treat its output as better segmentation.
+
 ponytail: fixed --max-gap threshold with no ground truth to tune it against.
 This is exploratory only, per CLAUDE.md Phase 1 (no threshold tuning). Revisit
 once Phase 2 annotations exist to actually validate a gap value.

@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ANNOTATION_DOCUMENT AUTHOR="sign-language-processing/segmentation" DATE="2026-09-07T00:24:37+07:00" VERSION="2.8" FORMAT="2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv2.8.xsd">
 	<HEADER>
-		<MEDIA_DESCRIPTOR MEDIA_URL="D:\TSL\sample\ThaiSignVis\process_videos\process_videos\[LIVE]_การประชุมสภาผู้แทนราษฎร_ครั้งที่_29_(สมัยสามัญประจำปีครั้งที่สอง)_เป็นพิเศษ_22_มี.ค._67\process_video_25.mp4" MIME_TYPE="video/mp4" />
-		<MEDIA_DESCRIPTOR MEDIA_URL="D:\TSL\outputs\house_29_w25\house_29_w25.pose" MIME_TYPE="application/pose" />
+		<MEDIA_DESCRIPTOR MEDIA_URL="file:///D:/TSL/sample/ThaiSignVis/process_videos/process_videos/%5BLIVE%5D_%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B8%AA%E0%B8%A0%E0%B8%B2%E0%B8%9C%E0%B8%B9%E0%B9%89%E0%B9%81%E0%B8%97%E0%B8%99%E0%B8%A3%E0%B8%B2%E0%B8%A9%E0%B8%8E%E0%B8%A3_%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88_29_%28%E0%B8%AA%E0%B8%A1%E0%B8%B1%E0%B8%A2%E0%B8%AA%E0%B8%B2%E0%B8%A1%E0%B8%B1%E0%B8%8D%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%AA%E0%B8%AD%E0%B8%87%29_%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99%E0%B8%9E%E0%B8%B4%E0%B9%80%E0%B8%A8%E0%B8%A9_22_%E0%B8%A1%E0%B8%B5.%E0%B8%84._67/process_video_25.mp4" RELATIVE_MEDIA_URL="../../sample/ThaiSignVis/process_videos/process_videos/[LIVE]_การประชุมสภาผู้แทนราษฎร_ครั้งที่_29_(สมัยสามัญประจำปีครั้งที่สอง)_เป็นพิเศษ_22_มี.ค._67/process_video_25.mp4" MIME_TYPE="video/mp4" />
+		<LINKED_FILE_DESCRIPTOR LINK_URL="file:///D:/TSL/outputs/house_29_w25/house_29_w25.pose" RELATIVE_LINK_URL="house_29_w25.pose" MIME_TYPE="application/octet-stream" />
 		<PROPERTY NAME="lastUsedAnnotation">0</PROPERTY>
 		</HEADER>
 	<TIME_ORDER>
