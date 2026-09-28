@@ -2,7 +2,8 @@
 
     python -m src.nectec_prep prep    [--clip] [--force]   raw mp4 -> 512x512@30 crop; .eaf -> ground_truth.json
     python -m src.nectec_prep verify  [--clip]             hands-inside-crop checks + contact sheets
-    python -m src.nectec_prep segment [--force]            pipeline.run_video() on the cropped mp4s
+    python -m src.nectec_prep segment [--force]            pipeline.run_video() on the cropped mp4s, then overlay
+    python -m src.nectec_prep overlay                      add GT_SIGN / GT_SENTENCE tiers to the .eaf
 
 --clip works on a 2-minute excerpt per video, so the crop can be checked before
 the ~2 h full pose extraction.
@@ -248,9 +249,41 @@ def contact_sheet(video: Path, video_id: str, hx, hy, hm, box, clip: bool) -> Pa
     return out
 
 
+def overlay_gt(video_id: str, config: dict) -> None:
+    """Add GT_SIGN / GT_SENTENCE tiers to the segmenter's .eaf, so ELAN stacks prediction
+    and ground truth on one timeline.
+
+    Values stay empty: gloss text is dropped at parse time and never written (Q1/Q3).
+    GT_SENTENCE comes from the `Gloss` tier, whose timing follows the speech, not the
+    signing -- it marks the annotated stretches, so do not read it as sentence truth.
+    Idempotent: existing GT_* tiers are removed first, so re-running never duplicates.
+    """
+    out_dir = REPO_ROOT / config["output_root"] / video_id
+    eaf_path = out_dir / f"{video_id}.eaf"
+    gt = json.loads((out_dir / "ground_truth.json").read_text(encoding="utf-8"))
+    fps = gt["fps"]
+
+    eaf = pympi.Elan.Eaf(str(eaf_path))
+    tiers = {
+        "GT_SIGN": [(s["start_frame"], s["end_frame"]) for s in gt["segments"]],
+        "GT_SENTENCE": [tuple(sp) for sp in gt["scored_spans"]],
+    }
+    for name, spans in tiers.items():
+        if name in eaf.get_tier_names():
+            eaf.remove_tier(name)
+        eaf.add_tier(name)
+        for start, end in spans:
+            start_ms, end_ms = round(start * 1000 / fps), round(end * 1000 / fps)
+            if end_ms > start_ms:
+                eaf.add_annotation(name, start_ms, end_ms)
+    eaf.to_file(str(eaf_path))
+    eaf_path.with_suffix(".bak").unlink(missing_ok=True)
+    print(f"  [overlay] GT_SIGN {len(tiers['GT_SIGN'])}, GT_SENTENCE {len(tiers['GT_SENTENCE'])} -> {eaf_path}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("stage", choices=["prep", "verify", "segment"])
+    parser.add_argument("stage", choices=["prep", "verify", "segment", "overlay"])
     parser.add_argument("--video", help="one video_id; default is config `run`")
     parser.add_argument("--clip", action="store_true", help=f"{CLIP_LEN_S}s excerpt from {CLIP_START_S}s (prep/verify)")
     parser.add_argument("--force", action="store_true", help="ignore the crop/pose cache")
@@ -271,11 +304,14 @@ def main() -> None:
             results.append(r)
             if r["failures"]:
                 failed[video_id] = r["failures"]
-        else:
+        elif args.stage == "segment":
             try:
                 run_video(video_id, config, args.force)  # not pipeline.main(): that rewrites reports/phase1_review.md
+                overlay_gt(video_id, config)
             except RuntimeError as e:
                 failed[video_id] = [str(e)]
+        else:
+            overlay_gt(video_id, config)
 
     if args.stage == "verify":
         out = REPO_ROOT / "reports" / "nectec_crop" / f"verify{'_clip' if args.clip else ''}.json"
