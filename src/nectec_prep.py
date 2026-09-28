@@ -98,18 +98,24 @@ def transcode(raw: Path, out: Path, pose: Path, box: dict, clip: bool, force: bo
     part.replace(out)
 
 
-def ms_spans(eaf: pympi.Elan.Eaf, tier: str, fps: float) -> list[tuple[int, int]]:
-    """Tier -> sorted frame spans. The annotation text is dropped here and never leaves this function."""
-    return sorted((round(s * fps / 1000), round(e * fps / 1000)) for s, e, *_ in eaf.get_annotation_data_for_tier(tier))
+def ms_spans(eaf: pympi.Elan.Eaf, tier: str, fps: float) -> list[tuple[int, int, str]]:
+    """Tier -> sorted (start_frame, end_frame, value). Callers writing JSON must drop the value:
+    ground_truth.json is boundaries only (CLAUDE.md 1). Only the review .eaf keeps the gloss text."""
+    return sorted((round(s * fps / 1000), round(e * fps / 1000), v)
+                  for s, e, v, *_ in eaf.get_annotation_data_for_tier(tier))
 
 
-def write_ground_truth(video_id: str, config: dict, fps: float) -> None:
+def source_eaf(video_id: str, config: dict) -> pympi.Elan.Eaf:
     eaf_path = REPO_ROOT / config["raw_root"] / config["videos"][video_id]["eaf"]
     if not eaf_path.exists():
         raise FileNotFoundError(f"eaf not found: {eaf_path}")
-    eaf = pympi.Elan.Eaf(str(eaf_path))
-    signs = ms_spans(eaf, "Gloss Labeling", fps)
-    scored = ms_spans(eaf, "Gloss", fps)  # coverage mask only (NECTEC_MERGE.md Q6), never a label
+    return pympi.Elan.Eaf(str(eaf_path))
+
+
+def write_ground_truth(video_id: str, config: dict, fps: float) -> None:
+    eaf = source_eaf(video_id, config)
+    signs = [(s, e) for s, e, _value in ms_spans(eaf, "Gloss Labeling", fps)]  # value dropped: JSON is boundaries only
+    scored = [(s, e) for s, e, _value in ms_spans(eaf, "Gloss", fps)]  # coverage mask only (Q6), never a label
 
     for name, spans in (("Gloss Labeling", signs), ("Gloss", scored)):
         zero = [sp for sp in spans if sp[1] <= sp[0]]
@@ -253,29 +259,31 @@ def overlay_gt(video_id: str, config: dict) -> None:
     """Add GT_SIGN / GT_SENTENCE tiers to the segmenter's .eaf, so ELAN stacks prediction
     and ground truth on one timeline.
 
-    Values stay empty: gloss text is dropped at parse time and never written (Q1/Q3).
+    Annotations carry the source gloss text, read straight from the NECTEC .eaf, so a human
+    can read what each block is in ELAN. `ground_truth.json` stays boundaries only
+    (CLAUDE.md 1) -- the text lives in this review file, never in the deliverable.
     GT_SENTENCE comes from the `Gloss` tier, whose timing follows the speech, not the
     signing -- it marks the annotated stretches, so do not read it as sentence truth.
     Idempotent: existing GT_* tiers are removed first, so re-running never duplicates.
     """
     out_dir = REPO_ROOT / config["output_root"] / video_id
     eaf_path = out_dir / f"{video_id}.eaf"
-    gt = json.loads((out_dir / "ground_truth.json").read_text(encoding="utf-8"))
-    fps = gt["fps"]
+    fps = json.loads((out_dir / "ground_truth.json").read_text(encoding="utf-8"))["fps"]
 
+    source = source_eaf(video_id, config)
     eaf = pympi.Elan.Eaf(str(eaf_path))
     tiers = {
-        "GT_SIGN": [(s["start_frame"], s["end_frame"]) for s in gt["segments"]],
-        "GT_SENTENCE": [tuple(sp) for sp in gt["scored_spans"]],
+        "GT_SIGN": ms_spans(source, "Gloss Labeling", fps),
+        "GT_SENTENCE": ms_spans(source, "Gloss", fps),
     }
     for name, spans in tiers.items():
         if name in eaf.get_tier_names():
             eaf.remove_tier(name)
         eaf.add_tier(name)
-        for start, end in spans:
+        for start, end, value in spans:
             start_ms, end_ms = round(start * 1000 / fps), round(end * 1000 / fps)
             if end_ms > start_ms:
-                eaf.add_annotation(name, start_ms, end_ms)
+                eaf.add_annotation(name, start_ms, end_ms, value)
     eaf.to_file(str(eaf_path))
     eaf_path.with_suffix(".bak").unlink(missing_ok=True)
     print(f"  [overlay] GT_SIGN {len(tiers['GT_SIGN'])}, GT_SENTENCE {len(tiers['GT_SENTENCE'])} -> {eaf_path}")

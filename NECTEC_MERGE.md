@@ -26,7 +26,7 @@ Keep (b) only if it beats (a) on held-out signers.
 
 | # | Decision |
 |---|---|
-| Q1 | NECTEC is used for its **span boundaries only**. Gloss text is discarded at parse time and never written to disk. NECTEC takes the place of Phase 2's manual annotation for this experiment, which unblocks Phase 3 (metrics) and Phase 4 (adaptation). CLAUDE.md gets amended (§8). |
+| Q1 | NECTEC is used for its **span boundaries only**: `ground_truth.json`, `segments.json` and every metric are text-free. Amended 2026-09-28 on request: the review `.eaf`'s `GT_SIGN` / `GT_SENTENCE` tiers do carry the source gloss text, so a human can read the blocks in ELAN. It is read from the source `.eaf` at overlay time and never enters the JSON deliverable. NECTEC takes the place of Phase 2's manual annotation for this experiment, which unblocks Phase 3 (metrics) and Phase 4 (adaptation). CLAUDE.md gets amended (§8). |
 | Q2 | Crop the interpreter panel with a **static crop box stored in config**, pad to square, scale to 512×512, resample to 30 fps. Then **verify that the crop box contains the hands** (§3.3). |
 | Q3 | Map the `Gloss Labeling` tier to `sign`. **Do not use** `Gloss` as a tier (its timing is exactly `CC_Aligned`'s, so it follows the speech, not the signing), nor `CC` / `CC_Aligned`. Exception: `Gloss` spans serve as a coverage mask, see Q6. |
 | Q4 | Use **only the 4 videos that have both an mp4 and an `.eaf`.** Skip the orphan ค่าเฉลี่ย `.eaf` (its `14.mp4` is missing) and the 16 unannotated mp4s. |
