@@ -286,6 +286,15 @@ def overlay_gt(video_id: str, config: dict) -> None:
                 eaf.add_annotation(name, start_ms, end_ms, value)
     eaf.to_file(str(eaf_path))
     eaf_path.with_suffix(".bak").unlink(missing_ok=True)
+
+    # Read back and count: ELAN merges adjacent annotations when a human edits and saves,
+    # and a silently merged GT tier would be scored as truth. Caught exactly that once.
+    written = pympi.Elan.Eaf(str(eaf_path))
+    for name, spans in tiers.items():
+        got = len(written.get_annotation_data_for_tier(name))
+        want = sum(1 for s, e, _v in spans if round(e * 1000 / fps) > round(s * 1000 / fps))
+        if got != want:
+            raise AssertionError(f"{video_id} {name}: wrote {want} annotations, file has {got}")
     print(f"  [overlay] GT_SIGN {len(tiers['GT_SIGN'])}, GT_SENTENCE {len(tiers['GT_SENTENCE'])} -> {eaf_path}")
 
 

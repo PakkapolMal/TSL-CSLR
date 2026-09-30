@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import kagglehub
 
 # kagglehub's `path=` must point at a single file, not a directory (that's why the
@@ -10,7 +12,7 @@ for name in files:
     downloaded = kagglehub.dataset_download(
         "thanawuttimpitak/thaisignvis/versions/2",
         path=f"{folder}/{subfolder}/{name}",
-        output_dir=r"D:\TSL\sample",
+        output_dir=str(Path(__file__).resolve().parent / "sample"),  # repo-relative: no hardcoded paths (CLAUDE.md 4)
         force_download=True,
     )
     print("Downloaded:", downloaded)
