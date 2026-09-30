@@ -28,3 +28,6 @@ outputs/**/*.pose
 # NECTEC 512x512 intermediates, regenerable from sample/NECTEC by src/nectec_prep.py.
 outputs/nectec_prep/
 outputs/nectec_clip/
+
+# Portable VLC install (185 MB), not part of the project.
+VLC/
